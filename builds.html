@@ -1,0 +1,856 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <title>My builds - Matia Steiner</title>
+    <meta
+      name="description"
+      content="The parts inside every PC I have built, from the CPU to the case."
+    />
+    <meta name="theme-color" content="#0a0000" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="STPcs · Matia Steiner" />
+    <meta property="og:title" content="My builds · Matia Steiner" />
+    <meta
+      property="og:description"
+      content="The parts inside every PC I have built, from the CPU to the case."
+    />
+    <meta property="og:locale" content="en_GB" />
+    <meta property="og:locale:alternate" content="de_CH" />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='150 91 240 176'%3E%3Cpath fill='%23FF3B30' d='M252 101h36l32.66 38.1-25.33 29.55-16.89-19.7 8.45-9.85L270 119.4l-16.89 19.7 59.1 68.95L270 257.3l-42.21-49.25 16.88-19.7L270 217.9l8.44-9.85-59.1-68.95zM303.77 178.5l16.89 19.7 8.44-9.85 16.89 19.7h33.77l-50.66-59.1zM236.23 178.5l-25.33-29.55-50.66 59.1h33.77l16.89-19.7 8.44 9.85z'/%3E%3C/svg%3E"
+    />
+    <link rel="stylesheet" href="assets/site.css" />
+  </head>
+  <body>
+    <canvas id="bg" aria-hidden="true"></canvas>
+    <div class="scrim" aria-hidden="true"></div>
+    <div class="grain" aria-hidden="true"></div>
+
+    <svg width="0" height="0" style="position: absolute" aria-hidden="true">
+      <defs>
+        <path
+          id="logo"
+          d="M252 101L288 101L320.66 139.1L295.33 168.65L278.44 148.95L286.89 139.1L270 119.4L253.11 139.1L312.21 208.05L270 257.3L227.79 208.05L244.67 188.35L270 217.9L278.44 208.05L219.34 139.1ZM303.77 178.5L320.66 198.2L329.1 188.35L345.99 208.05L379.76 208.05L329.1 148.95ZM236.23 178.5L210.9 148.95L160.24 208.05L194.01 208.05L210.9 188.35L219.34 198.2Z"
+        />
+      </defs>
+      <!-- Icon set: 24px grid, 1.6 stroke, round joins -->
+      <symbol id="i-tower" viewBox="0 0 24 24">
+        <rect x="6" y="2.5" width="12" height="19" rx="2" />
+        <circle cx="12" cy="15.5" r="3" />
+        <circle cx="12" cy="15.5" r=".6" />
+        <path d="M9 6.5h6M9 9h3" />
+      </symbol>
+      <symbol id="i-gamepad" viewBox="0 0 24 24">
+        <path
+          d="M7 8h10a4.5 4.5 0 0 1 4.4 5.4l-.7 3.3a2.4 2.4 0 0 1-4.2 1L15 16H9l-1.5 1.7a2.4 2.4 0 0 1-4.2-1l-.7-3.3A4.5 4.5 0 0 1 7 8z"
+        />
+        <path d="M8 10.8v3.4M6.3 12.5h3.4M15.5 11.5h.01M17.5 13.5h.01" />
+      </symbol>
+      <symbol id="i-briefcase" viewBox="0 0 24 24">
+        <rect x="3" y="7" width="18" height="13" rx="2" />
+        <path
+          d="M9 7V5.5A1.5 1.5 0 0 1 10.5 4h3A1.5 1.5 0 0 1 15 5.5V7M3 12.5h18M11 12.5v2h2v-2"
+        />
+      </symbol>
+      <symbol id="i-film" viewBox="0 0 24 24">
+        <rect x="3" y="4" width="18" height="16" rx="2" />
+        <path
+          d="M7.5 4v16M16.5 4v16M3 9h4.5M3 15h4.5M16.5 9H21M16.5 15H21M10.5 10l3.5 2-3.5 2z"
+        />
+      </symbol>
+      <symbol id="i-broadcast" viewBox="0 0 24 24">
+        <circle cx="12" cy="12" r="2" />
+        <path
+          d="M8.5 8.5a5 5 0 0 0 0 7M15.5 8.5a5 5 0 0 1 0 7M5.6 5.6a9 9 0 0 0 0 12.8M18.4 5.6a9 9 0 0 1 0 12.8"
+        />
+      </symbol>
+      <symbol id="i-upgrade" viewBox="0 0 24 24">
+        <rect x="5" y="5" width="14" height="14" rx="2" />
+        <path
+          d="M12 15.5v-7M9 11.5l3-3 3 3M9 2v3M15 2v3M9 19v3M15 19v3M2 9h3M2 15h3M19 9h3M19 15h3"
+        />
+      </symbol>
+      <symbol id="i-gpu" viewBox="0 0 24 24">
+        <rect x="2" y="6" width="20" height="11" rx="1.5" />
+        <circle cx="8" cy="11.5" r="3" />
+        <circle cx="16" cy="11.5" r="3" />
+        <path d="M5 17v2.5h7V17" />
+      </symbol>
+      <symbol id="i-cpu" viewBox="0 0 24 24">
+        <rect x="6" y="6" width="12" height="12" rx="1.5" />
+        <rect x="9.5" y="9.5" width="5" height="5" rx=".5" />
+        <path
+          d="M9.5 3v3M14.5 3v3M9.5 18v3M14.5 18v3M3 9.5h3M3 14.5h3M18 9.5h3M18 14.5h3"
+        />
+      </symbol>
+      <symbol id="i-ram" viewBox="0 0 24 24">
+        <path d="M3 7h18a1 1 0 0 1 1 1v8H2V8a1 1 0 0 1 1-1z" />
+        <path
+          d="M6 10v3M10 10v3M14 10v3M18 10v3M2 16v2.5M22 16v2.5M11.5 16v2.5h1V16"
+        />
+      </symbol>
+      <symbol id="i-ssd" viewBox="0 0 24 24">
+        <rect x="3" y="5" width="18" height="14" rx="2" />
+        <path d="M7 9.5h6M7 12.5h4" />
+        <circle cx="16.5" cy="15" r="1" />
+      </symbol>
+      <symbol id="i-fan" viewBox="0 0 24 24">
+        <circle cx="12" cy="12" r="9" />
+        <circle cx="12" cy="12" r="1.5" />
+        <path
+          d="M12 10.5C11.2 7 12.5 5 15 5.6M13.3 12.8c3.4 1 4.6 2.9 3 4.8M10.7 12.7c-2.5 2.5-4.8 2.6-5.6.2"
+        />
+      </symbol>
+      <symbol id="i-gauge" viewBox="0 0 24 24">
+        <path d="M3.5 17a8.5 8.5 0 1 1 17 0" />
+        <path d="M12 17l4.5-5" />
+        <circle cx="12" cy="17" r="1.4" />
+        <path d="M6.2 11.2l1.1 1M12 8.5v1.5M17.8 11.2l-1.1 1" />
+      </symbol>
+      <symbol id="i-window" viewBox="0 0 24 24">
+        <rect x="3" y="4" width="18" height="16" rx="2" />
+        <path d="M3 9h18M6.5 6.5h.01M9 6.5h.01M11.5 6.5h.01" />
+      </symbol>
+      <symbol id="i-download" viewBox="0 0 24 24">
+        <path d="M12 3.5v11M7.5 10l4.5 4.5 4.5-4.5M5 20h14" />
+      </symbol>
+      <symbol id="i-wind" viewBox="0 0 24 24">
+        <path
+          d="M3 8h10.5a2.5 2.5 0 1 0-2.5-2.5M3 12h15.5a2.5 2.5 0 1 1-2.5 2.5M3 16h7"
+        />
+      </symbol>
+      <symbol id="i-sliders" viewBox="0 0 24 24">
+        <path d="M4 6h9M17 6h3M4 12h3M11 12h9M4 18h11M19 18h1" />
+        <circle cx="15" cy="6" r="2" />
+        <circle cx="9" cy="12" r="2" />
+        <circle cx="17" cy="18" r="2" />
+      </symbol>
+      <symbol id="i-chat" viewBox="0 0 24 24">
+        <path
+          d="M4.5 4.5h15a1.5 1.5 0 0 1 1.5 1.5v9.5a1.5 1.5 0 0 1-1.5 1.5H10l-5.5 4v-4h0A1.5 1.5 0 0 1 3 15.5V6a1.5 1.5 0 0 1 1.5-1.5z"
+        />
+        <path d="M7.5 9h9M7.5 12.5h6" />
+      </symbol>
+      <symbol id="i-plan" viewBox="0 0 24 24">
+        <rect x="4.5" y="4" width="15" height="17.5" rx="2" />
+        <path
+          d="M9 2.5h6v3H9zM8 11l1.5 1.5L12.5 9.5M8 16.5l1.5 1.5 3-3M14.5 11.5H16M14.5 17H16"
+        />
+      </symbol>
+      <symbol id="i-wrench" viewBox="0 0 24 24">
+        <path
+          d="M14.7 6.3a4.2 4.2 0 0 0-5.6 5.3L3.6 17.1a2 2 0 0 0 2.8 2.8l5.5-5.5a4.2 4.2 0 0 0 5.3-5.6l-2.5 2.5-2.2-.6-.6-2.2z"
+        />
+      </symbol>
+      <symbol id="i-arrow" viewBox="0 0 24 24">
+        <path d="M5 12h14M13 6l6 6-6 6" />
+      </symbol>
+      <symbol id="i-board" viewBox="0 0 24 24">
+        <rect x="3" y="3" width="18" height="18" rx="2" />
+        <rect x="6.5" y="6.5" width="6" height="6" rx=".5" />
+        <path d="M15.5 6.5v6M18 6.5v6M6.5 16.5h11" />
+      </symbol>
+      <symbol id="i-power" viewBox="0 0 24 24">
+        <rect x="2.5" y="6" width="19" height="12" rx="1.5" />
+        <circle cx="9" cy="12" r="3.5" />
+        <path d="M9 8.5v7M5.5 12h7M16 10h3M16 14h3" />
+      </symbol>
+    </svg>
+
+    <a class="sr-only" href="#main">Skip to content</a>
+
+    <a class="back-fixed btn btn-ghost" href="index.html#builds"
+      ><svg viewBox="0 0 16 16" aria-hidden="true">
+        <path d="M13 8H3M7 4L3 8l4 4" /></svg
+      ><span data-en="Main page" data-de="Startseite">Main page</span></a
+    >
+
+    <nav class="notch" aria-label="Main">
+      <svg class="notch-edge" aria-hidden="true"><path id="notch-edge" /></svg>
+      <div class="notch-row">
+        <a class="mark" href="index.html" aria-label="Back to the main page"
+          ><svg viewBox="156 97 228 164" aria-hidden="true">
+            <use href="#logo" /></svg
+        ></a>
+        <a
+          class="link"
+          href="index.html#services"
+          data-en="Services"
+          data-de="Leistungen"
+          >Services</a
+        >
+        <a
+          class="link"
+          href="#top"
+          aria-current="page"
+          data-en="Builds"
+          data-de="Builds"
+          >Builds</a
+        >
+        <a
+          class="link"
+          href="index.html#process"
+          data-en="Process"
+          data-de="Ablauf"
+          >Process</a
+        >
+        <a
+          class="link"
+          href="index.html#about"
+          data-en="About me"
+          data-de="Über mich"
+          >About me</a
+        >
+        <a
+          class="link cta"
+          href="index.html#contact"
+          data-en="Contact"
+          data-de="Kontakt"
+          >Contact</a
+        >
+        <button
+          class="lang"
+          type="button"
+          data-lang-toggle
+          aria-label="Deutsch"
+        >
+          DE
+        </button>
+        <button
+          class="menu-btn"
+          type="button"
+          aria-expanded="false"
+          aria-controls="sheet"
+          aria-label="Menu"
+        >
+          <svg viewBox="0 0 20 20" aria-hidden="true">
+            <line class="l1" x1="3" y1="6.5" x2="17" y2="6.5" />
+            <line class="l2" x1="3" y1="13.5" x2="17" y2="13.5" />
+          </svg>
+        </button>
+      </div>
+    </nav>
+    <div class="sheet glass" id="sheet">
+      <a href="index.html" data-en="Main page" data-de="Startseite"
+        >Main page</a
+      >
+      <a href="index.html#services" data-en="Services" data-de="Leistungen"
+        >Services</a
+      >
+      <a href="#top" aria-current="page" data-en="Builds" data-de="Builds"
+        >Builds</a
+      >
+      <a href="index.html#process" data-en="Process" data-de="Ablauf"
+        >Process</a
+      >
+      <a href="index.html#about" data-en="About me" data-de="Über mich"
+        >About me</a
+      >
+      <a href="index.html#contact" data-en="Contact" data-de="Kontakt"
+        >Contact</a
+      >
+    </div>
+
+    <main id="main">
+      <header class="bp-head wrap" id="top">
+        <a class="back-link" href="index.html#builds"
+          ><svg viewBox="0 0 16 16" aria-hidden="true">
+            <path d="M13 8H3M7 4L3 8l4 4" /></svg
+          ><span data-en="Back to the main page" data-de="Zurück zur Startseite"
+            >Back to the main page</span
+          ></a
+        >
+        <h1
+          class="title"
+          data-en="PCs I've built"
+          data-de="PCs, die ich gebaut habe"
+        >
+          PCs I've built
+        </h1>
+        <nav class="bp-index" aria-label="Builds on this page">
+          <a class="bp-tile glass gcard" href="#blackout">
+            <img src="images/hero.webp" width="900" height="1200" alt="" />
+            <span>Blackout Gaming PC</span>
+          </a>
+          <a class="bp-tile glass gcard" href="#creator">
+            <img
+              src="images/workstation.webp"
+              width="900"
+              height="1200"
+              alt=""
+            />
+            <span>Mid-Range Gaming PC</span>
+          </a>
+          <a class="bp-tile glass gcard" href="#sleeper">
+            <img src="images/optiplex.webp" width="900" height="1200" alt="" />
+            <span>Sleeper Build</span>
+          </a>
+          <a class="bp-tile glass gcard" href="#whiteout">
+            <img src="images/whiteout.webp" width="900" height="1200" alt="" />
+            <span>Whiteout Build</span>
+          </a>
+        </nav>
+      </header>
+
+      <!-- ===== BLACKOUT GAMING PC ===== -->
+      <article class="bd wrap" id="blackout" aria-labelledby="blackout-name">
+        <div class="bd-media glass gcard" data-b3d style="--vt: pc-blackout">
+          <img
+            src="images/hero.webp"
+            width="900"
+            height="1200"
+            alt="Blackout gaming PC with an all-black case and liquid cooler"
+          />
+        </div>
+        <div class="bd-info">
+          <h2 class="bd-name" id="blackout-name">Blackout Gaming PC</h2>
+          <p
+            class="bd-lede"
+            data-en="High-end black build made for gaming, heavy AI and editing work." data-de="Schwarzer High-End-Build, gemacht für Gaming, anspruchsvolle KI- und Schnittarbeit."
+          >High-end black build made for gaming, heavy AI and editing work.</p>
+          <div class="specs glass gcard">
+            <h3
+              class="specs-title"
+              data-en="What's inside"
+              data-de="Was drin steckt"
+            >
+              What's inside
+            </h3>
+            <!-- Type each part between <dd> and </dd>. An empty one shows a dash. -->
+            <dl class="spec-list">
+              <div class="spec">
+                <dt>
+                  <svg class="i" aria-hidden="true"><use href="#i-cpu" /></svg
+                  ><span data-en="Processor" data-de="Prozessor"
+                    >Processor</span
+                  >
+                </dt>
+                <dd>AMD Ryzen 7 9800X3D</dd>
+              </div>
+              <div class="spec">
+                <dt>
+                  <svg class="i" aria-hidden="true"><use href="#i-gpu" /></svg
+                  ><span data-en="Graphics card" data-de="Grafikkarte"
+                    >Graphics card</span
+                  >
+                </dt>
+                <dd>AMD Radeon RX 9070 XT</dd>
+              </div>
+              <div class="spec">
+                <dt>
+                  <svg class="i" aria-hidden="true"><use href="#i-board" /></svg
+                  ><span data-en="Motherboard" data-de="Mainboard"
+                    >Motherboard</span
+                  >
+                </dt>
+                <dd>ASUS ROG Strix X870-F</dd>
+              </div>
+              <div class="spec">
+                <dt>
+                  <svg class="i" aria-hidden="true"><use href="#i-ram" /></svg
+                  ><span data-en="Memory" data-de="Arbeitsspeicher"
+                    >Memory</span
+                  >
+                </dt>
+                <dd>96 GB DDR5</dd>
+              </div>
+              <div class="spec">
+                <dt>
+                  <svg class="i" aria-hidden="true"><use href="#i-ssd" /></svg
+                  ><span data-en="Storage" data-de="Speicher">Storage</span>
+                </dt>
+                <dd>Samsung 990 Pro 2 TB</dd>
+              </div>
+              <div class="spec">
+                <dt>
+                  <svg class="i" aria-hidden="true"><use href="#i-fan" /></svg
+                  ><span data-en="Cooling" data-de="Kühlung">Cooling</span>
+                </dt>
+                <dd>Noctua - Arctic LQ 360mm</dd>
+              </div>
+              <div class="spec">
+                <dt>
+                  <svg class="i" aria-hidden="true"><use href="#i-power" /></svg
+                  ><span data-en="Power supply" data-de="Netzteil"
+                    >Power supply</span
+                  >
+                </dt>
+                <dd>Lian Li Edge 1000 Platinum</dd>
+              </div>
+              <div class="spec">
+                <dt>
+                  <svg class="i" aria-hidden="true"><use href="#i-tower" /></svg
+                  ><span data-en="Case" data-de="Gehäuse">Case</span>
+                </dt>
+                <dd>Lian Li O11 Dynamic V2</dd>
+              </div>
+              <div class="spec">
+                <dt>
+                  <svg class="i" aria-hidden="true">
+                    <use href="#i-window" /></svg
+                  ><span data-en="Operating system" data-de="Betriebssystem"
+                    >Operating system</span
+                  >
+                </dt>
+                <dd>Windows 11 Pro</dd>
+              </div>
+            </dl>
+          </div>
+        </div>
+      </article>
+
+      <!-- ===== MID-RANGE GAMING PC ===== -->
+      <article class="bd wrap" id="creator" aria-labelledby="creator-name">
+        <div class="bd-media glass gcard" data-b3d style="--vt: pc-creator">
+          <img
+            src="images/workstation.webp"
+            width="900"
+            height="1200"
+            alt="White and black mid-range gaming PC with purple-lit fans"
+          />
+        </div>
+        <div class="bd-info">
+          <h2 class="bd-name" id="creator-name">Mid-Range Gaming PC</h2>
+          <p
+            class="bd-lede"
+            data-en="Value-for-money build that handles gaming and content creation effortlessly." data-de="Preis-Leistungs-Build, der Gaming und Content Creation mühelos schafft."
+          >Value-for-money build that handles gaming and content creation effortlessly.</p>
+          <div class="specs glass gcard">
+            <h3
+              class="specs-title"
+              data-en="What's inside"
+              data-de="Was drin steckt"
+            >
+              What's inside
+            </h3>
+            <!-- Type each part between <dd> and </dd>. An empty one shows a dash. -->
+            <dl class="spec-list">
+              <div class="spec">
+                <dt>
+                  <svg class="i" aria-hidden="true"><use href="#i-cpu" /></svg
+                  ><span data-en="Processor" data-de="Prozessor"
+                    >Processor</span
+                  >
+                </dt>
+                <dd>AMD Ryzen 7 5700X3D</dd>
+              </div>
+              <div class="spec">
+                <dt>
+                  <svg class="i" aria-hidden="true"><use href="#i-gpu" /></svg
+                  ><span data-en="Graphics card" data-de="Grafikkarte"
+                    >Graphics card</span
+                  >
+                </dt>
+                <dd>MSI GeForce RTX 3070 Gaming X Trio</dd>
+              </div>
+              <div class="spec">
+                <dt>
+                  <svg class="i" aria-hidden="true"><use href="#i-board" /></svg
+                  ><span data-en="Motherboard" data-de="Mainboard"
+                    >Motherboard</span
+                  >
+                </dt>
+                <dd>ASUS ROG Strix X570</dd>
+              </div>
+              <div class="spec">
+                <dt>
+                  <svg class="i" aria-hidden="true"><use href="#i-ram" /></svg
+                  ><span data-en="Memory" data-de="Arbeitsspeicher"
+                    >Memory</span
+                  >
+                </dt>
+                <dd>32 GB G.Skill</dd>
+              </div>
+              <div class="spec">
+                <dt>
+                  <svg class="i" aria-hidden="true"><use href="#i-ssd" /></svg
+                  ><span data-en="Storage" data-de="Speicher">Storage</span>
+                </dt>
+                <dd>Samsung 990 Pro 1 TB</dd>
+              </div>
+              <div class="spec">
+                <dt>
+                  <svg class="i" aria-hidden="true"><use href="#i-fan" /></svg
+                  ><span data-en="Cooling" data-de="Kühlung">Cooling</span>
+                </dt>
+                <dd>NZXT Kraken X63</dd>
+              </div>
+              <div class="spec">
+                <dt>
+                  <svg class="i" aria-hidden="true"><use href="#i-power" /></svg
+                  ><span data-en="Power supply" data-de="Netzteil"
+                    >Power supply</span
+                  >
+                </dt>
+                <dd>Corsair RM850x</dd>
+              </div>
+              <div class="spec">
+                <dt>
+                  <svg class="i" aria-hidden="true"><use href="#i-tower" /></svg
+                  ><span data-en="Case" data-de="Gehäuse">Case</span>
+                </dt>
+                <dd>NZXT H510 Elite</dd>
+              </div>
+              <div class="spec">
+                <dt>
+                  <svg class="i" aria-hidden="true">
+                    <use href="#i-window" /></svg
+                  ><span data-en="Operating system" data-de="Betriebssystem"
+                    >Operating system</span
+                  >
+                </dt>
+                <dd>Windows 11 Pro</dd>
+              </div>
+            </dl>
+          </div>
+        </div>
+      </article>
+
+      <!-- ===== SLEEPER BUILD ===== -->
+      <article class="bd wrap" id="sleeper" aria-labelledby="sleeper-name">
+        <div class="bd-media glass gcard" data-b3d style="--vt: pc-sleeper">
+          <img
+            src="images/optiplex.webp"
+            width="900"
+            height="1200"
+            alt="Sleeper build: a plain office tower with a GeForce RTX graphics card inside"
+          />
+        </div>
+        <div class="bd-info">
+          <h2 class="bd-name" id="sleeper-name">Sleeper Build</h2>
+          <p
+            class="bd-lede"
+            data-en="A Dell OptiPlex on the outside, gaming hardware on the inside." data-de="Aussen ein Dell OptiPlex, innen Gaming-Hardware."
+          >A Dell OptiPlex on the outside, gaming hardware on the inside.</p>
+          <div class="specs glass gcard">
+            <h3
+              class="specs-title"
+              data-en="What's inside"
+              data-de="Was drin steckt"
+            >
+              What's inside
+            </h3>
+            <!-- Type each part between <dd> and </dd>. An empty one shows a dash. -->
+            <dl class="spec-list">
+              <div class="spec">
+                <dt>
+                  <svg class="i" aria-hidden="true"><use href="#i-cpu" /></svg
+                  ><span data-en="Processor" data-de="Prozessor"
+                    >Processor</span
+                  >
+                </dt>
+                <dd>Intel Core i5-11600K</dd>
+              </div>
+              <div class="spec">
+                <dt>
+                  <svg class="i" aria-hidden="true"><use href="#i-gpu" /></svg
+                  ><span data-en="Graphics card" data-de="Grafikkarte"
+                    >Graphics card</span
+                  >
+                </dt>
+                <dd>NVIDIA GeForce RTX 2080 Super</dd>
+              </div>
+              <div class="spec">
+                <dt>
+                  <svg class="i" aria-hidden="true"><use href="#i-board" /></svg
+                  ><span data-en="Motherboard" data-de="Mainboard"
+                    >Motherboard</span
+                  >
+                </dt>
+                <dd>MSI MAG B560M Mortar (mATX)</dd>
+              </div>
+              <div class="spec">
+                <dt>
+                  <svg class="i" aria-hidden="true"><use href="#i-ram" /></svg
+                  ><span data-en="Memory" data-de="Arbeitsspeicher"
+                    >Memory</span
+                  >
+                </dt>
+                <dd>32 GB Corsair Vengeance</dd>
+              </div>
+              <div class="spec">
+                <dt>
+                  <svg class="i" aria-hidden="true"><use href="#i-ssd" /></svg
+                  ><span data-en="Storage" data-de="Speicher">Storage</span>
+                </dt>
+                <dd>Samsung 990 Pro 1 TB</dd>
+              </div>
+              <div class="spec">
+                <dt>
+                  <svg class="i" aria-hidden="true"><use href="#i-fan" /></svg
+                  ><span data-en="Cooling" data-de="Kühlung">Cooling</span>
+                </dt>
+                <dd>Full Noctua cooling</dd>
+              </div>
+              <div class="spec">
+                <dt>
+                  <svg class="i" aria-hidden="true"><use href="#i-power" /></svg
+                  ><span data-en="Power supply" data-de="Netzteil"
+                    >Power supply</span
+                  >
+                </dt>
+                <dd>Corsair RM850x</dd>
+              </div>
+              <div class="spec">
+                <dt>
+                  <svg class="i" aria-hidden="true"><use href="#i-tower" /></svg
+                  ><span data-en="Case" data-de="Gehäuse">Case</span>
+                </dt>
+                <dd>Dell OptiPlex 7010 (modified)</dd>
+              </div>
+              <div class="spec">
+                <dt>
+                  <svg class="i" aria-hidden="true">
+                    <use href="#i-window" /></svg
+                  ><span data-en="Operating system" data-de="Betriebssystem"
+                    >Operating system</span
+                  >
+                </dt>
+                <dd>Windows 11 Pro</dd>
+              </div>
+            </dl>
+          </div>
+        </div>
+      </article>
+
+      <!-- ===== WHITEOUT BUILD ===== -->
+      <article class="bd wrap" id="whiteout" aria-labelledby="whiteout-name">
+        <div class="bd-media glass gcard" data-b3d style="--vt: pc-whiteout">
+          <img
+            src="images/whiteout.webp"
+            width="900"
+            height="1200"
+            alt="All-white PC in a Lian Li case with a white liquid cooler, white cables and a Sapphire Radeon graphics card"
+          />
+        </div>
+        <div class="bd-info">
+          <h2 class="bd-name" id="whiteout-name">Whiteout Build</h2>
+          <p
+            class="bd-lede"
+            data-en="All-white build in the mid- to high-end range."
+            data-de="Komplett weisser Build im mittleren bis oberen Leistungsbereich."
+          >
+            All-white build in the mid- to high-end range.
+          </p>
+          <div class="specs glass gcard">
+            <h3
+              class="specs-title"
+              data-en="What's inside"
+              data-de="Was drin steckt"
+            >
+              What's inside
+            </h3>
+            <!-- Type each part between <dd> and </dd>. An empty one shows a dash. -->
+            <dl class="spec-list">
+              <div class="spec">
+                <dt>
+                  <svg class="i" aria-hidden="true"><use href="#i-cpu" /></svg
+                  ><span data-en="Processor" data-de="Prozessor"
+                    >Processor</span
+                  >
+                </dt>
+                <dd>AMD Ryzen 5 7600X</dd>
+              </div>
+              <div class="spec">
+                <dt>
+                  <svg class="i" aria-hidden="true"><use href="#i-gpu" /></svg
+                  ><span data-en="Graphics card" data-de="Grafikkarte"
+                    >Graphics card</span
+                  >
+                </dt>
+                <dd>Sapphire Radeon RX 7800 XT</dd>
+              </div>
+              <div class="spec">
+                <dt>
+                  <svg class="i" aria-hidden="true"><use href="#i-board" /></svg
+                  ><span data-en="Motherboard" data-de="Mainboard"
+                    >Motherboard</span
+                  >
+                </dt>
+                <dd>Gigabyte B650</dd>
+              </div>
+              <div class="spec">
+                <dt>
+                  <svg class="i" aria-hidden="true"><use href="#i-ram" /></svg
+                  ><span data-en="Memory" data-de="Arbeitsspeicher"
+                    >Memory</span
+                  >
+                </dt>
+                <dd>32 GB G.Skill</dd>
+              </div>
+              <div class="spec">
+                <dt>
+                  <svg class="i" aria-hidden="true"><use href="#i-ssd" /></svg
+                  ><span data-en="Storage" data-de="Speicher">Storage</span>
+                </dt>
+                <dd>Corsair MP600 Core 2 TB</dd>
+              </div>
+              <div class="spec">
+                <dt>
+                  <svg class="i" aria-hidden="true"><use href="#i-fan" /></svg
+                  ><span data-en="Cooling" data-de="Kühlung">Cooling</span>
+                </dt>
+                <dd>Full Lian Li setup</dd>
+              </div>
+              <div class="spec">
+                <dt>
+                  <svg class="i" aria-hidden="true"><use href="#i-power" /></svg
+                  ><span data-en="Power supply" data-de="Netzteil"
+                    >Power supply</span
+                  >
+                </dt>
+                <dd>Corsair RM750x</dd>
+              </div>
+              <div class="spec">
+                <dt>
+                  <svg class="i" aria-hidden="true"><use href="#i-tower" /></svg
+                  ><span data-en="Case" data-de="Gehäuse">Case</span>
+                </dt>
+                <dd>NZXT H9 Flow</dd>
+              </div>
+              <div class="spec">
+                <dt>
+                  <svg class="i" aria-hidden="true">
+                    <use href="#i-window" /></svg
+                  ><span data-en="Operating system" data-de="Betriebssystem"
+                    >Operating system</span
+                  >
+                </dt>
+                <dd>Windows 11 Pro</dd>
+              </div>
+            </dl>
+          </div>
+        </div>
+      </article>
+
+      <section class="bp-end wrap" aria-labelledby="end-title">
+        <div class="end-card glass gcard">
+          <h2
+            class="title"
+            id="end-title"
+            data-en="Want one like these?"
+            data-de="Willst du auch so einen?"
+          >
+            Want one like these?
+          </h2>
+          <p
+            class="lede"
+            data-en="Tell me what you'll use it for and what you'd like to spend, and I'll plan one for you."
+            data-de="Sag mir, wofür du ihn brauchst und was du ausgeben willst, und ich plane einen für dich."
+          >
+            Tell me what you'll use it for and what you'd like to spend, and
+            I'll plan one for you.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="index.html#contact"
+              ><span data-en="Write to me" data-de="Schreib mir"
+                >Write to me</span
+              ><svg viewBox="0 0 16 16" aria-hidden="true">
+                <path d="M3 8h10M9 4l4 4-4 4" /></svg
+            ></a>
+            <a class="btn btn-ghost" href="index.html"
+              ><svg viewBox="0 0 16 16" aria-hidden="true">
+                <path d="M13 8H3M7 4L3 8l4 4" /></svg
+              ><span
+                data-en="Back to the main page"
+                data-de="Zurück zur Startseite"
+                >Back to the main page</span
+              ></a
+            >
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="wrap foot">
+      <div class="brand">
+        <span class="brand-tile"
+          ><svg viewBox="156 97 228 164" aria-hidden="true">
+            <use href="#logo" /></svg
+        ></span>
+        <span
+          ><strong>Matia Steiner</strong
+          ><small
+            data-en="Custom PCs from Bern · © 2026"
+            data-de="Custom-PCs aus Bern · © 2026"
+            >Custom PCs from Bern · © 2026</small
+          ></span
+        >
+      </div>
+      <div>
+        <h4 data-en="Contact" data-de="Kontakt">Contact</h4>
+        <ul>
+          <li>
+            <a
+              href="mailto:matiasteiner@gmail.com"
+              data-en="Email"
+              data-de="E-Mail"
+              >Email</a
+            >
+          </li>
+          <li>
+            <p data-en="Bern, Switzerland" data-de="Bern, Schweiz">
+              Bern, Switzerland
+            </p>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h4 data-en="Pages" data-de="Seiten">Pages</h4>
+        <ul>
+          <li>
+            <a
+              href="index.html#services"
+              data-en="Services"
+              data-de="Leistungen"
+              >Services</a
+            >
+          </li>
+          <li>
+            <a href="index.html" data-en="Main page" data-de="Startseite"
+              >Main page</a
+            >
+          </li>
+          <li>
+            <a href="index.html#process" data-en="Process" data-de="Ablauf"
+              >Process</a
+            >
+          </li>
+          <li>
+            <a href="index.html#about" data-en="About me" data-de="Über mich"
+              >About me</a
+            >
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h4 data-en="More" data-de="Mehr">More</h4>
+        <ul>
+          <li>
+            <a href="#top" data-en="Back to top" data-de="Nach oben"
+              >Back to top</a
+            >
+          </li>
+          <li>
+            <button
+              type="button"
+              data-lang-toggle
+              data-en="Deutsch"
+              data-de="English"
+            >
+              Deutsch
+            </button>
+          </li>
+        </ul>
+      </div>
+    </footer>
+
+    <script src="assets/site.js"></script>
+  </body>
+</html>

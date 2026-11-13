@@ -1,0 +1,21 @@
+# Local tooling (recreate with: npm install, and see workflows/prep_images.md for .venv)
+node_modules/
+.venv/
+__pycache__/
+
+# Disposable working files, archived old versions and local backups
+.tmp/
+backups/
+
+# Raw source photos and design references (large, not used by the site)
+Ownwebsiteinspo/
+brand assets/
+
+# Secrets and OS clutter
+.env
+credentials.json
+token.json
+.DS_Store
+
+# Agent instructions (local only)
+CLAUDE.md

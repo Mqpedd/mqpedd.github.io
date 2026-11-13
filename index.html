@@ -1,0 +1,970 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <title>Matia Steiner · Custom PCs, built by hand in Bern</title>
+    <meta
+      name="description"
+      content="I'm Matia Steiner, and I build custom PCs by hand in Bern, tailored to your needs."
+    />
+    <meta name="theme-color" content="#0a0000" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="STPcs · Matia Steiner" />
+    <meta
+      property="og:title"
+      content="Matia Steiner · Custom PCs, built by hand in Bern"
+    />
+    <meta
+      property="og:description"
+      content="I'm Matia Steiner, and I build custom PCs by hand in Bern, tailored to your needs."
+    />
+    <meta property="og:locale" content="en_GB" />
+    <meta property="og:locale:alternate" content="de_CH" />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='150 91 240 176'%3E%3Cpath fill='%23FF3B30' d='M252 101h36l32.66 38.1-25.33 29.55-16.89-19.7 8.45-9.85L270 119.4l-16.89 19.7 59.1 68.95L270 257.3l-42.21-49.25 16.88-19.7L270 217.9l8.44-9.85-59.1-68.95zM303.77 178.5l16.89 19.7 8.44-9.85 16.89 19.7h33.77l-50.66-59.1zM236.23 178.5l-25.33-29.55-50.66 59.1h33.77l16.89-19.7 8.44 9.85z'/%3E%3C/svg%3E"
+    />
+    <link rel="stylesheet" href="assets/site.css" />
+  </head>
+  <body>
+    <canvas id="bg" aria-hidden="true"></canvas>
+    <div class="scrim" aria-hidden="true"></div>
+    <div class="grain" aria-hidden="true"></div>
+
+    <svg width="0" height="0" style="position: absolute" aria-hidden="true">
+      <defs>
+        <path
+          id="logo"
+          d="M252 101L288 101L320.66 139.1L295.33 168.65L278.44 148.95L286.89 139.1L270 119.4L253.11 139.1L312.21 208.05L270 257.3L227.79 208.05L244.67 188.35L270 217.9L278.44 208.05L219.34 139.1ZM303.77 178.5L320.66 198.2L329.1 188.35L345.99 208.05L379.76 208.05L329.1 148.95ZM236.23 178.5L210.9 148.95L160.24 208.05L194.01 208.05L210.9 188.35L219.34 198.2Z"
+        />
+      </defs>
+      <!-- Icon set: 24px grid, 1.6 stroke, round joins -->
+      <symbol id="i-tower" viewBox="0 0 24 24">
+        <rect x="6" y="2.5" width="12" height="19" rx="2" />
+        <circle cx="12" cy="15.5" r="3" />
+        <circle cx="12" cy="15.5" r=".6" />
+        <path d="M9 6.5h6M9 9h3" />
+      </symbol>
+      <symbol id="i-gamepad" viewBox="0 0 24 24">
+        <path
+          d="M7 8h10a4.5 4.5 0 0 1 4.4 5.4l-.7 3.3a2.4 2.4 0 0 1-4.2 1L15 16H9l-1.5 1.7a2.4 2.4 0 0 1-4.2-1l-.7-3.3A4.5 4.5 0 0 1 7 8z"
+        />
+        <path d="M8 10.8v3.4M6.3 12.5h3.4M15.5 11.5h.01M17.5 13.5h.01" />
+      </symbol>
+      <symbol id="i-briefcase" viewBox="0 0 24 24">
+        <rect x="3" y="7" width="18" height="13" rx="2" />
+        <path
+          d="M9 7V5.5A1.5 1.5 0 0 1 10.5 4h3A1.5 1.5 0 0 1 15 5.5V7M3 12.5h18M11 12.5v2h2v-2"
+        />
+      </symbol>
+      <symbol id="i-film" viewBox="0 0 24 24">
+        <rect x="3" y="4" width="18" height="16" rx="2" />
+        <path
+          d="M7.5 4v16M16.5 4v16M3 9h4.5M3 15h4.5M16.5 9H21M16.5 15H21M10.5 10l3.5 2-3.5 2z"
+        />
+      </symbol>
+      <symbol id="i-broadcast" viewBox="0 0 24 24">
+        <circle cx="12" cy="12" r="2" />
+        <path
+          d="M8.5 8.5a5 5 0 0 0 0 7M15.5 8.5a5 5 0 0 1 0 7M5.6 5.6a9 9 0 0 0 0 12.8M18.4 5.6a9 9 0 0 1 0 12.8"
+        />
+      </symbol>
+      <symbol id="i-upgrade" viewBox="0 0 24 24">
+        <rect x="5" y="5" width="14" height="14" rx="2" />
+        <path
+          d="M12 15.5v-7M9 11.5l3-3 3 3M9 2v3M15 2v3M9 19v3M15 19v3M2 9h3M2 15h3M19 9h3M19 15h3"
+        />
+      </symbol>
+      <symbol id="i-gpu" viewBox="0 0 24 24">
+        <rect x="2" y="6" width="20" height="11" rx="1.5" />
+        <circle cx="8" cy="11.5" r="3" />
+        <circle cx="16" cy="11.5" r="3" />
+        <path d="M5 17v2.5h7V17" />
+      </symbol>
+      <symbol id="i-cpu" viewBox="0 0 24 24">
+        <rect x="6" y="6" width="12" height="12" rx="1.5" />
+        <rect x="9.5" y="9.5" width="5" height="5" rx=".5" />
+        <path
+          d="M9.5 3v3M14.5 3v3M9.5 18v3M14.5 18v3M3 9.5h3M3 14.5h3M18 9.5h3M18 14.5h3"
+        />
+      </symbol>
+      <symbol id="i-ram" viewBox="0 0 24 24">
+        <path d="M3 7h18a1 1 0 0 1 1 1v8H2V8a1 1 0 0 1 1-1z" />
+        <path
+          d="M6 10v3M10 10v3M14 10v3M18 10v3M2 16v2.5M22 16v2.5M11.5 16v2.5h1V16"
+        />
+      </symbol>
+      <symbol id="i-ssd" viewBox="0 0 24 24">
+        <rect x="3" y="5" width="18" height="14" rx="2" />
+        <path d="M7 9.5h6M7 12.5h4" />
+        <circle cx="16.5" cy="15" r="1" />
+      </symbol>
+      <symbol id="i-fan" viewBox="0 0 24 24">
+        <circle cx="12" cy="12" r="9" />
+        <circle cx="12" cy="12" r="1.5" />
+        <path
+          d="M12 10.5C11.2 7 12.5 5 15 5.6M13.3 12.8c3.4 1 4.6 2.9 3 4.8M10.7 12.7c-2.5 2.5-4.8 2.6-5.6.2"
+        />
+      </symbol>
+      <symbol id="i-gauge" viewBox="0 0 24 24">
+        <path d="M3.5 17a8.5 8.5 0 1 1 17 0" />
+        <path d="M12 17l4.5-5" />
+        <circle cx="12" cy="17" r="1.4" />
+        <path d="M6.2 11.2l1.1 1M12 8.5v1.5M17.8 11.2l-1.1 1" />
+      </symbol>
+      <symbol id="i-window" viewBox="0 0 24 24">
+        <rect x="3" y="4" width="18" height="16" rx="2" />
+        <path d="M3 9h18M6.5 6.5h.01M9 6.5h.01M11.5 6.5h.01" />
+      </symbol>
+      <symbol id="i-download" viewBox="0 0 24 24">
+        <path d="M12 3.5v11M7.5 10l4.5 4.5 4.5-4.5M5 20h14" />
+      </symbol>
+      <symbol id="i-wind" viewBox="0 0 24 24">
+        <path
+          d="M3 8h10.5a2.5 2.5 0 1 0-2.5-2.5M3 12h15.5a2.5 2.5 0 1 1-2.5 2.5M3 16h7"
+        />
+      </symbol>
+      <symbol id="i-sliders" viewBox="0 0 24 24">
+        <path d="M4 6h9M17 6h3M4 12h3M11 12h9M4 18h11M19 18h1" />
+        <circle cx="15" cy="6" r="2" />
+        <circle cx="9" cy="12" r="2" />
+        <circle cx="17" cy="18" r="2" />
+      </symbol>
+      <symbol id="i-chat" viewBox="0 0 24 24">
+        <path
+          d="M4.5 4.5h15a1.5 1.5 0 0 1 1.5 1.5v9.5a1.5 1.5 0 0 1-1.5 1.5H10l-5.5 4v-4h0A1.5 1.5 0 0 1 3 15.5V6a1.5 1.5 0 0 1 1.5-1.5z"
+        />
+        <path d="M7.5 9h9M7.5 12.5h6" />
+      </symbol>
+      <symbol id="i-plan" viewBox="0 0 24 24">
+        <rect x="4.5" y="4" width="15" height="17.5" rx="2" />
+        <path
+          d="M9 2.5h6v3H9zM8 11l1.5 1.5L12.5 9.5M8 16.5l1.5 1.5 3-3M14.5 11.5H16M14.5 17H16"
+        />
+      </symbol>
+      <symbol id="i-wrench" viewBox="0 0 24 24">
+        <path
+          d="M14.7 6.3a4.2 4.2 0 0 0-5.6 5.3L3.6 17.1a2 2 0 0 0 2.8 2.8l5.5-5.5a4.2 4.2 0 0 0 5.3-5.6l-2.5 2.5-2.2-.6-.6-2.2z"
+        />
+      </symbol>
+      <symbol id="i-arrow" viewBox="0 0 24 24">
+        <path d="M5 12h14M13 6l6 6-6 6" />
+      </symbol>
+    </svg>
+
+    <a class="sr-only" href="#main">Skip to content</a>
+
+    <nav class="notch" aria-label="Main">
+      <svg class="notch-edge" aria-hidden="true"><path id="notch-edge" /></svg>
+      <div class="notch-row">
+        <a class="mark" href="#home" aria-label="Back to top"
+          ><svg viewBox="156 97 228 164" aria-hidden="true">
+            <use href="#logo" /></svg
+        ></a>
+        <a class="link" href="#services" data-en="Services" data-de="Leistungen"
+          >Services</a
+        >
+        <a class="link" href="#builds" data-en="Builds" data-de="Builds"
+          >Builds</a
+        >
+        <a class="link" href="#process" data-en="Process" data-de="Ablauf"
+          >Process</a
+        >
+        <a class="link" href="#about" data-en="About me" data-de="Über mich"
+          >About me</a
+        >
+        <a class="link cta" href="#contact" data-en="Contact" data-de="Kontakt"
+          >Contact</a
+        >
+        <button
+          class="lang"
+          type="button"
+          data-lang-toggle
+          aria-label="Deutsch"
+        >
+          DE
+        </button>
+        <button
+          class="menu-btn"
+          type="button"
+          aria-expanded="false"
+          aria-controls="sheet"
+          aria-label="Menu"
+        >
+          <svg viewBox="0 0 20 20" aria-hidden="true">
+            <line class="l1" x1="3" y1="6.5" x2="17" y2="6.5" />
+            <line class="l2" x1="3" y1="13.5" x2="17" y2="13.5" />
+          </svg>
+        </button>
+      </div>
+    </nav>
+    <div class="sheet glass" id="sheet">
+      <a href="#services" data-en="Services" data-de="Leistungen">Services</a>
+      <a href="#builds" data-en="Builds" data-de="Builds">Builds</a>
+      <a href="#process" data-en="Process" data-de="Ablauf">Process</a>
+      <a href="#about" data-en="About me" data-de="Über mich">About me</a>
+      <a href="#contact" data-en="Contact" data-de="Kontakt">Contact</a>
+    </div>
+
+    <main id="main">
+      <!-- HERO -->
+      <header class="hero" id="home">
+        <h1 class="sr-only">Matia Steiner, I build custom PCs in Bern</h1>
+
+        <div class="stage">
+          <div
+            class="name-in"
+            aria-hidden="true"
+            style="position: absolute; inset: 0"
+          >
+            <p class="name-ghost" id="name-ghost">
+              <span>Matia</span><span>Steiner</span>
+            </p>
+          </div>
+          <div
+            class="name-in"
+            aria-hidden="true"
+            style="position: absolute; inset: 0"
+          >
+            <p class="name" id="name"><span>Matia</span><span>Steiner</span></p>
+          </div>
+          <div class="floor" id="floor" aria-hidden="true"></div>
+          <div class="pc-in" id="pc-in">
+            <div class="pc" id="pc">
+              <img
+                src="images/hero.webp"
+                width="900"
+                height="1200"
+                alt="Black custom gaming PC with a triple-fan graphics card and liquid cooler"
+                fetchpriority="high"
+              />
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-copy">
+          <p
+            class="lede"
+            data-en="I build clean computers tailored to your needs."
+            data-de="Ich baue personalisierte Computer."
+          >
+            I build clean computers tailored to your needs.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#builds"
+              ><span data-en="See my builds" data-de="Meine Builds ansehen"
+                >See my builds</span
+              ><svg viewBox="0 0 16 16" aria-hidden="true">
+                <path d="M3 8h10M9 4l4 4-4 4" /></svg
+            ></a>
+            <a
+              class="btn btn-ghost"
+              href="#contact"
+              data-en="Write to me"
+              data-de="Schreib mir"
+              >Write to me</a
+            >
+          </div>
+        </div>
+      </header>
+
+      <!-- SERVICES -->
+      <section class="section" id="services">
+        <div class="wrap">
+          <h2
+            class="title"
+            data-en="How I can help"
+            data-de="Wobei ich dir helfe"
+          >
+            How I can help
+          </h2>
+          <p
+            class="lede"
+            data-en="Tell me your choice of parts, and I'll get to building, from front to back :)"
+            data-de="Sag mir, welche Teile du dir wünschst, und ich baue deinen PC von A bis Z :)"
+          >
+            Tell me your choice of parts, and I'll get to building, from front
+            to back :)
+          </p>
+
+          <div class="bento">
+            <article class="svc svc-lg glass gcard">
+              <svg class="i svc-mark" aria-hidden="true">
+                <use href="#i-tower" />
+              </svg>
+              <div class="svc-head">
+                <span class="ico"
+                  ><svg class="i" aria-hidden="true">
+                    <use href="#i-tower" /></svg
+                ></span>
+              </div>
+              <h3 data-en="Custom builds" data-de="Individuelle Builds">
+                Custom builds
+              </h3>
+              <p
+                data-en="I plan a PC around your budget and what you'll use it for, then build and test it before you get it."
+                data-de="Ich plane einen PC nach deinem Budget und deinem Einsatzzweck und baue und teste ihn, bevor du ihn bekommst."
+              >
+                I plan a PC around your budget and what you'll use it for, then
+                build and test it before you get it.
+              </p>
+              <ul class="kit">
+                <li>
+                  <span class="tile"
+                    ><svg class="i" aria-hidden="true">
+                      <use href="#i-gamepad" /></svg></span
+                  ><span data-en="Gaming" data-de="Gaming">Gaming</span>
+                </li>
+                <li>
+                  <span class="tile"
+                    ><svg class="i" aria-hidden="true">
+                      <use href="#i-briefcase" /></svg></span
+                  ><span data-en="Office" data-de="Büro">Office</span>
+                </li>
+                <li>
+                  <span class="tile"
+                    ><svg class="i" aria-hidden="true">
+                      <use href="#i-film" /></svg></span
+                  ><span data-en="Editing" data-de="Schnitt">Editing</span>
+                </li>
+                <li>
+                  <span class="tile"
+                    ><svg class="i" aria-hidden="true">
+                      <use href="#i-broadcast" /></svg></span
+                  ><span data-en="Streaming" data-de="Streaming"
+                    >Streaming</span
+                  >
+                </li>
+              </ul>
+              <a class="svc-cta" href="#contact"
+                ><span
+                  data-en="Let's plan yours"
+                  data-de="Lass uns deinen planen"
+                  >Let's plan yours</span
+                ><svg class="i" aria-hidden="true"><use href="#i-arrow" /></svg
+              ></a>
+            </article>
+            <article class="svc glass gcard">
+              <div class="svc-head">
+                <span class="ico"
+                  ><svg class="i" aria-hidden="true">
+                    <use href="#i-upgrade" /></svg
+                ></span>
+              </div>
+              <h3 data-en="Upgrades" data-de="Upgrades">Upgrades</h3>
+              <p
+                data-en="I find the parts that make your current PC faster and fit them for you."
+                data-de="Ich finde die Teile, die deinen aktuellen PC schneller machen, und baue sie dir ein."
+              >
+                I find the parts that make your current PC faster and fit them
+                for you.
+              </p>
+              <ul class="kit">
+                <li>
+                  <span class="tile"
+                    ><svg class="i" aria-hidden="true">
+                      <use href="#i-gpu" /></svg></span
+                  ><span data-en="GPU" data-de="GPU">GPU</span>
+                </li>
+                <li>
+                  <span class="tile"
+                    ><svg class="i" aria-hidden="true">
+                      <use href="#i-cpu" /></svg></span
+                  ><span data-en="CPU" data-de="CPU">CPU</span>
+                </li>
+                <li>
+                  <span class="tile"
+                    ><svg class="i" aria-hidden="true">
+                      <use href="#i-ram" /></svg></span
+                  ><span data-en="RAM" data-de="RAM">RAM</span>
+                </li>
+                <li>
+                  <span class="tile"
+                    ><svg class="i" aria-hidden="true">
+                      <use href="#i-ssd" /></svg></span
+                  ><span data-en="Storage" data-de="Speicher">Storage</span>
+                </li>
+                <li>
+                  <span class="tile"
+                    ><svg class="i" aria-hidden="true">
+                      <use href="#i-fan" /></svg></span
+                  ><span data-en="Cooling" data-de="Kühlung">Cooling</span>
+                </li>
+              </ul>
+            </article>
+            <article class="svc glass gcard">
+              <div class="svc-head">
+                <span class="ico"
+                  ><svg class="i" aria-hidden="true">
+                    <use href="#i-gauge" /></svg
+                ></span>
+              </div>
+              <h3
+                data-en="Optimization & Tweaks"
+                data-de="Optimierung & Tweaks"
+              >
+                Optimization &amp; Tweaks
+              </h3>
+              <p
+                data-en="I set up and fine-tune what you already have, getting you better performance."
+                data-de="Ich richte ein und optimiere, was du schon hast, damit du mehr Leistung herausholst."
+              >
+                I set up and fine-tune what you already have, getting you better
+                performance.
+              </p>
+              <ul class="kit">
+                <li>
+                  <span class="tile"
+                    ><svg class="i" aria-hidden="true">
+                      <use href="#i-window" /></svg></span
+                  ><span data-en="Windows" data-de="Windows">Windows</span>
+                </li>
+                <li>
+                  <span class="tile"
+                    ><svg class="i" aria-hidden="true">
+                      <use href="#i-download" /></svg></span
+                  ><span data-en="Drivers" data-de="Treiber">Drivers</span>
+                </li>
+                <li>
+                  <span class="tile"
+                    ><svg class="i" aria-hidden="true">
+                      <use href="#i-wind" /></svg></span
+                  ><span data-en="Airflow" data-de="Airflow">Airflow</span>
+                </li>
+                <li>
+                  <span class="tile"
+                    ><svg class="i" aria-hidden="true">
+                      <use href="#i-sliders" /></svg></span
+                  ><span data-en="Tuning" data-de="Tuning">Tuning</span>
+                </li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- BUILDS -->
+      <section class="section" id="builds">
+        <div class="wrap">
+          <h2
+            class="title"
+            data-en="PCs I've built"
+            data-de="PCs, die ich gebaut habe"
+          >
+            PCs I've built
+          </h2>
+          <p
+            class="lede"
+            data-en="Here are some of my builds. Yours could be here soon ;)"
+            data-de="Hier sind ein paar meiner Builds. Deiner könnte bald dazukommen ;)"
+          >
+            Here are some of my builds. Yours could be here soon ;)
+          </p>
+
+          <div class="grid-3 builds-grid">
+            <article class="build glass gcard">
+              <div class="build-media" data-b3d style="--vt: pc-blackout">
+                <img
+                  src="images/hero.webp"
+                  width="900"
+                  height="1200"
+                  loading="lazy"
+                  alt="Blackout gaming PC with an all-black case and liquid cooler"
+                />
+              </div>
+              <div class="build-body">
+                <h3>Blackout Gaming PC</h3>
+                <p
+                  data-en="High-end black build made for gaming, heavy AI and editing work."
+                  data-de="Schwarzer High-End-Build, gemacht für Gaming, anspruchsvolle KI- und Schnittarbeit."
+                >
+                  High-end black build made for gaming, heavy AI and editing
+                  work.
+                </p>
+                <a class="btn btn-ghost build-btn" href="builds.html#blackout"
+                  ><span data-en="See the specs" data-de="Specs ansehen"
+                    >See the specs</span
+                  ><svg viewBox="0 0 16 16" aria-hidden="true">
+                    <path d="M3 8h10M9 4l4 4-4 4" /></svg
+                ></a>
+              </div>
+            </article>
+            <article class="build glass gcard">
+              <div class="build-media" data-b3d style="--vt: pc-creator">
+                <img
+                  src="images/workstation.webp"
+                  width="900"
+                  height="1200"
+                  loading="lazy"
+                  alt="White and black mid-range gaming PC with purple-lit fans"
+                />
+              </div>
+              <div class="build-body">
+                <h3>Mid-Range Gaming PC</h3>
+                <p
+                  data-en="Value-for-money build that handles gaming and content creation effortlessly."
+                  data-de="Preis-Leistungs-Build, der Gaming und Content Creation mühelos schafft."
+                >
+                  Value-for-money build that handles gaming and content creation
+                  effortlessly.
+                </p>
+                <a class="btn btn-ghost build-btn" href="builds.html#creator"
+                  ><span data-en="See the specs" data-de="Specs ansehen"
+                    >See the specs</span
+                  ><svg viewBox="0 0 16 16" aria-hidden="true">
+                    <path d="M3 8h10M9 4l4 4-4 4" /></svg
+                ></a>
+              </div>
+            </article>
+            <article class="build glass gcard">
+              <div class="build-media" data-b3d style="--vt: pc-sleeper">
+                <img
+                  src="images/optiplex.webp"
+                  width="900"
+                  height="1200"
+                  loading="lazy"
+                  alt="Sleeper build: a plain office tower with a GeForce RTX graphics card inside"
+                />
+              </div>
+              <div class="build-body">
+                <h3>Sleeper Build</h3>
+                <p
+                  data-en="A Dell OptiPlex on the outside, gaming hardware on the inside."
+                  data-de="Aussen ein Dell OptiPlex, innen Gaming-Hardware."
+                >
+                  A Dell OptiPlex on the outside, gaming hardware on the inside.
+                </p>
+                <a class="btn btn-ghost build-btn" href="builds.html#sleeper"
+                  ><span data-en="See the specs" data-de="Specs ansehen"
+                    >See the specs</span
+                  ><svg viewBox="0 0 16 16" aria-hidden="true">
+                    <path d="M3 8h10M9 4l4 4-4 4" /></svg
+                ></a>
+              </div>
+            </article>
+            <article class="build glass gcard">
+              <div class="build-media" data-b3d style="--vt: pc-whiteout">
+                <img
+                  src="images/whiteout.webp"
+                  width="900"
+                  height="1200"
+                  loading="lazy"
+                  alt="All-white PC in a Lian Li case with a white liquid cooler, white cables and a Sapphire Radeon graphics card"
+                />
+              </div>
+              <div class="build-body">
+                <h3>Whiteout Build</h3>
+                <p
+                  data-en="All-white build in the mid- to high-end range."
+                  data-de="Komplett weisser Build im mittleren bis oberen Leistungsbereich."
+                >
+                  All-white build in the mid- to high-end range.
+                </p>
+                <a class="btn btn-ghost build-btn" href="builds.html#whiteout"
+                  ><span data-en="See the specs" data-de="Specs ansehen"
+                    >See the specs</span
+                  ><svg viewBox="0 0 16 16" aria-hidden="true">
+                    <path d="M3 8h10M9 4l4 4-4 4" /></svg
+                ></a>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- PROCESS -->
+      <section class="section" id="process">
+        <div class="wrap">
+          <h2
+            class="title"
+            data-en="How we'll<br>work together."
+            data-de="So arbeiten<br>wir zusammen."
+          >
+            How we'll<br />work together.
+          </h2>
+          <p
+            class="lede"
+            data-en="From your first message to the moment you switch it on, you talk to me directly."
+            data-de="Von der ersten Nachricht bis zum ersten Einschalten sprichst du direkt mit mir."
+          >
+            From your first message to the moment you switch it on, you talk to
+            me directly.
+          </p>
+
+          <div class="timeline" id="timeline">
+            <span class="tl-line" aria-hidden="true"
+              ><span class="tl-fill"></span
+            ></span>
+            <ol class="tl-steps">
+              <li class="tl-step">
+                <span class="node"
+                  ><svg class="i" aria-hidden="true"><use href="#i-chat" /></svg
+                ></span>
+                <p class="tl-no">
+                  <span data-en="Step" data-de="Schritt">Step</span> 01
+                </p>
+                <h3
+                  data-en="Tell me what you need"
+                  data-de="Sag mir, was du brauchst"
+                >
+                  Tell me what you need
+                </h3>
+                <p
+                  data-en="You tell me what the PC is for, the style you like and your budget."
+                  data-de="Du erzählst mir, wofür der PC ist, welchen Stil du magst und wie hoch dein Budget ist."
+                >
+                  You tell me what the PC is for, the style you like and your
+                  budget.
+                </p>
+              </li>
+              <li class="tl-step">
+                <span class="node"
+                  ><svg class="i" aria-hidden="true"><use href="#i-plan" /></svg
+                ></span>
+                <p class="tl-no">
+                  <span data-en="Step" data-de="Schritt">Step</span> 02
+                </p>
+                <h3 data-en="I plan the parts" data-de="Ich plane die Teile">
+                  I plan the parts
+                </h3>
+                <p
+                  data-en="I pick parts that work well together and fit your budget."
+                  data-de="Ich wähle Teile, die gut zusammenpassen und in dein Budget passen."
+                >
+                  I pick parts that work well together and fit your budget.
+                </p>
+              </li>
+              <li class="tl-step">
+                <span class="node"
+                  ><svg class="i" aria-hidden="true">
+                    <use href="#i-wrench" /></svg
+                ></span>
+                <p class="tl-no">
+                  <span data-en="Step" data-de="Schritt">Step</span> 03
+                </p>
+                <h3
+                  data-en="I build it for you"
+                  data-de="Ich baue ihn für dich"
+                >
+                  I build it for you
+                </h3>
+                <p
+                  data-en="I put it together carefully, test it properly and get it ready for you."
+                  data-de="Ich baue ihn sorgfältig zusammen, teste ihn gründlich und mache ihn für dich bereit."
+                >
+                  I put it together carefully, test it properly and get it ready
+                  for you.
+                </p>
+              </li>
+            </ol>
+          </div>
+        </div>
+      </section>
+
+      <!-- ABOUT -->
+      <section class="statement" id="about" aria-label="About me">
+        <div class="statement-pin">
+          <p
+            class="big"
+            id="statement"
+            data-en="I'm *Matia*. I've been around computers since I was a kid, and in 2026 I started building them for other people. There's no team behind this, just me."
+            data-de="Ich bin *Matia*. Computer begleiten mich seit meiner Kindheit, und 2026 habe ich angefangen, sie für andere zu bauen. Hinter all dem steckt kein Team, nur ich."
+          >
+            I'm Matia. I've been around computers since I was a kid, and in 2026
+            I started building them for other people. There's no team behind
+            this, just me.
+          </p>
+        </div>
+      </section>
+
+      <section
+        class="section"
+        style="padding-top: 0"
+        aria-labelledby="founder-name"
+      >
+        <div class="wrap">
+          <article class="founder glass gcard">
+            <!-- Founder photo: save a 576 × 1024 image as images/founder.jpg and it appears here automatically. -->
+            <div class="founder-photo">
+              <div class="ph">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <rect x="3" y="4" width="18" height="16" rx="2" />
+                  <circle cx="9" cy="10" r="2" />
+                  <path d="M21 16l-5-5-8 9" />
+                </svg>
+                <b data-en="Photo of Matia" data-de="Foto von Matia"
+                  >Photo of Matia</b
+                >
+                <span>576 × 1024</span>
+              </div>
+              <img
+                src="images/founder.jpg"
+                width="576"
+                height="1024"
+                alt="Matia Steiner"
+                onerror="this.hidden = true"
+              />
+            </div>
+            <div class="founder-text">
+              <p
+                class="role"
+                data-en="The person building your PC"
+                data-de="Die Person, die deinen PC baut"
+              >
+                The person building your PC
+              </p>
+              <h3 id="founder-name">Matia Steiner</h3>
+              <p
+                data-en="Since childhood I have been surrounded by technology. Through many years of hands-on experience with computers, I know my way around them very well and now build them for customers."
+                data-de="Seit meiner Kindheit bin ich von Technik umgeben. Durch viele Jahre Eigenerfahrung mit Computern kenne ich mich mittlerweile sehr gut aus und baue sie heute für Kundinnen und Kunden."
+              >
+                Since childhood I have been surrounded by technology. Through
+                many years of hands-on experience with computers, I know my way
+                around them very well and now build them for customers.
+              </p>
+              <p
+                data-en="When you write to me, you're talking to the person who will build your PC."
+                data-de="Wenn du mir schreibst, sprichst du mit der Person, die deinen PC baut."
+              >
+                When you write to me, you're talking to the person who will
+                build your PC.
+              </p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- CONTACT -->
+      <section class="section" id="contact">
+        <div class="wrap">
+          <div class="contact-box glass gcard">
+            <div>
+              <h2
+                class="title"
+                data-en="Let's talk about<br>your PC."
+                data-de="Lass uns über<br>deinen PC reden."
+              >
+                Let's talk about<br />your PC.
+              </h2>
+              <p
+                class="lede"
+                data-en="Write to me with your budget, the games or programs you use, and the style you like."
+                data-de="Schreib mir dein Budget, welche Spiele oder Programme du nutzt und welchen Stil du magst."
+              >
+                Write to me with your budget, the games or programs you use, and
+                the style you like.
+              </p>
+              <div class="details">
+                <a href="mailto:matiasteiner@gmail.com"
+                  ><svg viewBox="0 0 24 24" aria-hidden="true">
+                    <rect x="3" y="5" width="18" height="14" rx="2" />
+                    <path d="M3 7l9 6 9-6" /></svg
+                  >matiasteiner@gmail.com</a
+                >
+                <p>
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path
+                      d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"
+                    />
+                    <circle cx="12" cy="9.5" r="2.5" /></svg
+                  ><span data-en="Bern, Switzerland" data-de="Bern, Schweiz"
+                    >Bern, Switzerland</span
+                  >
+                </p>
+                <p>
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <rect x="6" y="3" width="12" height="18" rx="2" />
+                    <path d="M10 7h4M12 17h.01" /></svg
+                  >Gaming PCs · Workstations · Upgrades
+                </p>
+              </div>
+            </div>
+
+            <!--
+              Messages are sent through Web3Forms (web3forms.com) to Matia's inbox.
+              Paste the access key from the Web3Forms email into data-key below.
+              While it is empty, the form opens the visitor's email app instead.
+            -->
+            <form
+              class="form"
+              id="contact-form"
+              novalidate
+              data-key="0a77e2d4-7dcc-4f55-9402-a0af8b3df717"
+            >
+              <!-- spam trap: invisible to people, bots fill it in and get ignored -->
+              <input
+                class="hp"
+                type="checkbox"
+                name="botcheck"
+                tabindex="-1"
+                autocomplete="off"
+                aria-hidden="true"
+              />
+              <div class="field">
+                <label for="f-name" data-en="Name" data-de="Name">Name</label>
+                <input
+                  id="f-name"
+                  name="name"
+                  type="text"
+                  autocomplete="name"
+                  required
+                  data-en-placeholder="Your name"
+                  data-de-placeholder="Dein Name"
+                  placeholder="Your name"
+                />
+              </div>
+              <div class="field">
+                <label for="f-email" data-en="Email" data-de="E-Mail"
+                  >Email</label
+                >
+                <input
+                  id="f-email"
+                  name="email"
+                  type="email"
+                  autocomplete="email"
+                  required
+                  data-en-placeholder="you@example.com"
+                  data-de-placeholder="du@beispiel.ch"
+                  placeholder="you@example.com"
+                />
+              </div>
+              <div class="field">
+                <label
+                  for="f-budget"
+                  data-en="Budget / PC type"
+                  data-de="Budget / PC-Typ"
+                  >Budget / PC type</label
+                >
+                <input
+                  id="f-budget"
+                  name="budget"
+                  type="text"
+                  data-en-placeholder="e.g. CHF 1500, gaming"
+                  data-de-placeholder="z. B. CHF 1500, Gaming"
+                  placeholder="e.g. CHF 1500, gaming"
+                />
+              </div>
+              <div class="field">
+                <label for="f-msg" data-en="Message" data-de="Nachricht"
+                  >Message</label
+                >
+                <textarea
+                  id="f-msg"
+                  name="message"
+                  required
+                  data-en-placeholder="Tell me what you need"
+                  data-de-placeholder="Sag mir, was du brauchst"
+                  placeholder="Tell me what you need"
+                ></textarea>
+              </div>
+              <button class="btn btn-primary" type="submit">
+                <span data-en="Send to Matia" data-de="An Matia senden"
+                  >Send to Matia</span
+                ><svg viewBox="0 0 16 16" aria-hidden="true">
+                  <path d="M3 8h10M9 4l4 4-4 4" />
+                </svg>
+              </button>
+              <p class="form-note" id="form-note" aria-live="polite"></p>
+              <p
+                class="form-privacy"
+                data-en="Your message is delivered to my inbox through the form service Web3Forms. I only use it to answer you."
+                data-de="Deine Nachricht wird über den Formulardienst Web3Forms an mein Postfach zugestellt. Ich nutze sie nur, um dir zu antworten."
+              >
+                Your message is delivered to my inbox through the form service
+                Web3Forms. I only use it to answer you.
+              </p>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="wrap foot">
+      <div class="brand">
+        <span class="brand-tile"
+          ><svg viewBox="156 97 228 164" aria-hidden="true">
+            <use href="#logo" /></svg
+        ></span>
+        <span
+          ><strong>Matia Steiner</strong
+          ><small
+            data-en="Custom PCs from Bern · © 2026"
+            data-de="Custom-PCs aus Bern · © 2026"
+            >Custom PCs from Bern · © 2026</small
+          ></span
+        >
+      </div>
+      <div>
+        <h4 data-en="Contact" data-de="Kontakt">Contact</h4>
+        <ul>
+          <li>
+            <a
+              href="mailto:matiasteiner@gmail.com"
+              data-en="Email"
+              data-de="E-Mail"
+              >Email</a
+            >
+          </li>
+          <li>
+            <p data-en="Bern, Switzerland" data-de="Bern, Schweiz">
+              Bern, Switzerland
+            </p>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h4 data-en="Pages" data-de="Seiten">Pages</h4>
+        <ul>
+          <li>
+            <a href="#services" data-en="Services" data-de="Leistungen"
+              >Services</a
+            >
+          </li>
+          <li>
+            <a href="#builds" data-en="Builds" data-de="Builds">Builds</a>
+          </li>
+          <li>
+            <a
+              href="builds.html"
+              data-en="All build specs"
+              data-de="Alle Build-Specs"
+              >All build specs</a
+            >
+          </li>
+          <li>
+            <a href="#process" data-en="Process" data-de="Ablauf">Process</a>
+          </li>
+          <li>
+            <a href="#about" data-en="About me" data-de="Über mich">About me</a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h4 data-en="More" data-de="Mehr">More</h4>
+        <ul>
+          <li>
+            <a href="#home" data-en="Back to top" data-de="Nach oben"
+              >Back to top</a
+            >
+          </li>
+          <li>
+            <button
+              type="button"
+              data-lang-toggle
+              data-en="Deutsch"
+              data-de="English"
+            >
+              Deutsch
+            </button>
+          </li>
+        </ul>
+      </div>
+    </footer>
+
+    <script src="assets/site.js"></script>
+  </body>
+</html>
